@@ -1,0 +1,210 @@
+
+<!-- saved from url=(0038)file:///C:/Users/xrist/Desktop/a2.html -->
+<html lang="it"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+html,body{
+margin:0;
+padding:0;
+background:transparent;
+overflow:hidden;
+font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ===== ARCOBALENO FLUO ===== */
+:root{
+--rainbow-fluo: linear-gradient(90deg, 
+    #ff0055, #ff5e00, #e1ff00, #00ff2a, 
+    #00ffff, #001aff, #9d00ff, #ff0055);
+}
+
+/* ===== VIDEO BOX - Modificato: Larghezza aumentata a 280px ===== */
+.video-box{
+position:fixed;
+width:280px; 
+height:520px;
+top:50%;
+transform:translateY(-50%);
+border-radius:20px;
+overflow:hidden;
+z-index:5;
+animation:float 8s ease-in-out infinite alternate;
+}
+
+/* Portati verso l'esterno (solo 5px dal bordo) */
+.left{ left:5px; }
+.right{ right:5px; }
+
+.video-box::before{
+content:"";
+position:absolute;
+inset:0;
+padding:4px;
+border-radius:20px;
+background:var(--rainbow-fluo);
+background-size:400% 400%;
+animation:rainbowMove 6s linear infinite, pulse 2s ease-in-out infinite;
+-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+filter:blur(3px) brightness(1.7);
+pointer-events:none;
+}
+
+video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* ===== TESTO ARCOBALENO ===== */
+.fluo-text {
+font-size: 32px;
+font-weight: 800;
+background: var(--rainbow-fluo);
+background-size: 400% 400%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+filter: 
+    drop-shadow(0 0 5px #fff) 
+    drop-shadow(0 0 12px #00ffff) 
+    drop-shadow(0 0 20px #ff00ea);
+animation: rainbowMove 6s linear infinite, liquid 3s ease-in-out infinite;
+}
+
+.video-box .fluo-text{
+position:absolute;
+bottom:25px;
+width:100%;
+text-align:center;
+}
+
+/* ===== AREA CENTRALE ===== */
+.center-area{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:10;
+pointer-events:none;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px; 
+}
+
+.center-area img{
+width:260px;
+height:auto;
+animation: superFancy 5s ease-in-out infinite alternate;
+}
+
+.center-area .fluo-text {
+font-size: 42px;
+white-space: nowrap;
+}
+
+/* ===== ANIMAZIONI ===== */
+@keyframes superFancy {
+  0% { opacity: 0.5; transform: scale(0.9) rotate(-2deg); }
+  50% { opacity: 1; filter: drop-shadow(0 0 25px rgba(0, 255, 255, 0.8)); }
+  100% { opacity: 0.7; transform: scale(1.1) rotate(2deg); }
+}
+
+@keyframes rainbowMove{
+0%{background-position:0%}
+100%{background-position:400%}
+}
+
+@keyframes float{
+0%{transform:translateY(-55%) translateX(-10px) rotate(-1deg);}
+100%{transform:translateY(-45%) translateX(10px) rotate(1deg);}
+}
+
+@keyframes pulse{
+0%{filter:blur(3px) brightness(1.4);}
+50%{filter:blur(6px) brightness(2);}
+100%{filter:blur(3px) brightness(1.4);}
+}
+
+@keyframes liquid{
+0%{transform:scaleX(1) skewX(0deg);}
+50%{transform:scaleX(1.05) skewX(3deg);}
+100%{transform:scaleX(1) skewX(0deg);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="video-box left">
+    <video autoplay="" loop="" muted="" playsinline="" src="https://i.imgur.com/iD4UK4d.mp4"></video>
+    <div class="fluo-text">Juntos somos una aventura inolvidable</div>
+</div>
+
+<div class="video-box right">
+    <video autoplay="" loop="" muted="" playsinline="" src="https://i.imgur.com/iD4UK4d.mp4"></video>
+    <div class="fluo-text">Juntos somos una aventura inolvidable</div>
+</div>
+
+
+
+
+
+</body></html>
+
+<script>
+
+
+		var message="no copy christina!";
+
+		function clickIE4(){
+		if (event.button==2){
+		alert(message);
+		return false;
+		}
+		}
+
+		function clickNS4(e){
+		if (document.layers||document.getElementById&&!document.all){
+		if (e.which==2||e.which==3){
+		alert(message);
+		return false;
+		}
+		}
+		}
+
+		if (document.layers){
+		document.captureEvents(Event.MOUSEDOWN);
+		document.onmousedown=clickNS4;
+		}
+		else if (document.all&&!document.getElementById){
+		document.onmousedown=clickIE4;
+		}
+
+		document.oncontextmenu=new Function("alert(message);return false")
+</script>	
+
+
+
+
+
+<script>
+
+
+		function disableselect(e){
+		return false
+		}
+		function reEnable(){
+		return true
+		}
+		document.onselectstart=new Function ("return false")
+		if (window.sidebar){
+		document.onmousedown=disableselect
+		document.onclick=reEnable
+		}
+</script>  
+
+</body></html>
